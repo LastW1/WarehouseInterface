@@ -246,6 +246,7 @@
     <Compile Include="Db\DbDtos\Category.cs" />
     <Compile Include="Db\DbDtos\Item.cs" />
     <Compile Include="Db\DbDtos\Password.cs" />
+    <Compile Include="Db\Repositories\CategoryRepository.cs" />
     <Compile Include="Db\Repositories\ItemRepository.cs" />
     <Compile Include="Dtos\ItemDto.cs" />
     <Compile Include="Managers\PasswordManager.cs" />
