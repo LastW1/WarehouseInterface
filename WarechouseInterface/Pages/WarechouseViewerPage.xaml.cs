@@ -15,8 +15,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WarechouseInterface.Db.Repositories;
-using WarechouseInterface.DbDtos;
+using WarechouseInterface.Db.DbDtos;
 using WarechouseInterface.Repositories;
+using WarechouseInterface.Dtos;
 
 namespace WarechouseInterface.Pages
 {
@@ -27,7 +28,7 @@ namespace WarechouseInterface.Pages
     {
         private ItemRepository _itemRepository;
 
-        public ObservableCollection<ItemDbDto> DataGridCollection = new ObservableCollection<ItemDbDto>();
+        public ObservableCollection<ItemDto> DataGridCollection = new ObservableCollection<ItemDto>();
         public WarechouseViewerPage()
         {
             var context = new DatabaseContext();

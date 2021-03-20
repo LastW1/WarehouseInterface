@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WarechouseInterface.DbDtos
+namespace WarechouseInterface.Db.DbDtos
 {
     [Table("PASSWORD")]
     public class PasswordDbDto

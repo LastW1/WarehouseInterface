@@ -243,9 +243,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Db\DbDtos\Category.cs" />
-    <Compile Include="Db\DbDtos\Item.cs" />
-    <Compile Include="Db\DbDtos\Password.cs" />
+    <Compile Include="Db\DbDtos\CategoryDbDto.cs" />
+    <Compile Include="Db\DbDtos\ItemDbDto.cs" />
+    <Compile Include="Db\DbDtos\PasswordDbDto.cs" />
     <Compile Include="Db\Repositories\CategoryRepository.cs" />
     <Compile Include="Db\Repositories\ItemRepository.cs" />
     <Compile Include="Dtos\ItemDto.cs" />

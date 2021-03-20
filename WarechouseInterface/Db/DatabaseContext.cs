@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Configuration;
-using WarechouseInterface.DbDtos;
+using WarechouseInterface.Db.DbDtos;
 
 namespace WarechouseInterface.Repositories
 {
@@ -9,6 +9,7 @@ namespace WarechouseInterface.Repositories
         private bool _isTest;
         public DbSet<PasswordDbDto> Password { get; set; }
         public DbSet<ItemDbDto> Item { get; set; }
+        public DbSet<CategoryDbDto> Category { get; set; }
 
         public DatabaseContext(bool isTest = false)
         {

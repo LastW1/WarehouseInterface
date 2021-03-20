@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WarechouseInterface.DbDtos
+namespace WarechouseInterface.Db.DbDtos
 {
     [Table("ITEM")]
     public class ItemDbDto
@@ -16,7 +16,7 @@ namespace WarechouseInterface.DbDtos
         [Column("NAME")]
         public string Name { get; set; }
         [Column("PRICE")]
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
         [Column("COUNT")]
         public int Count { get; set; }
         [Column("DESCRIBE")]
@@ -26,9 +26,9 @@ namespace WarechouseInterface.DbDtos
         [Column("ADDITIONAL_INFO")]
         public string AdditionalInfo { get; set; }
         [Column("MIN_ALLERT")]
-        public int MinAllert { get; set; }
+        public int? MinAllert { get; set; }
         [Column("MAX_ALLERT")]
-        public int MaxAllert { get; set; }
+        public int? MaxAllert { get; set; }
     }
 }
 

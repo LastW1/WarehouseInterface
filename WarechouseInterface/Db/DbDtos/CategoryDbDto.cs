@@ -3,7 +3,7 @@
 namespace WarechouseInterface.Db.DbDtos
 {
     [Table("CATEGORY")]
-    public class Category
+    public class CategoryDbDto
     {
         [Column("ID")]
         public int Id { get; set; }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using WarechouseInterface.DbDtos;
+using WarechouseInterface.Db.DbDtos;
 
 namespace WarechouseInterface.Repositories
 {
