@@ -1,0 +1,31 @@
+﻿<Window x:Class="WarechouseInterface.Pages.PageLogic.LoginPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WarechouseInterface.Pages.PageLogic"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="LoginPage" Height="140" Width="350">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="1" Content="PODAJ HASŁO" FontSize="25" HorizontalAlignment="Center"/>
+        <PasswordBox Name ="PasswordBoxItem" Grid.Row="1" Grid.Column="1" Width="200" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" PreviewMouseLeftButtonDown="PasswordBoxItem_PreviewMouseLeftButtonDown" KeyDown="PasswordBoxItem_KeyDown"/>
+        <Label Name ="MessageLabel" Content="" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" FontSize="15" HorizontalAlignment="Center" Foreground="Red"/>
+        <Button Grid.Row="3" Grid.Column="0" Content="Zamknij" Height="30" Margin="10,10,10,10" Click="ExitButton_Click"/>
+        <Button Grid.Row="3" Grid.Column="3" Content="Zaloguj" Height="30" Margin="10,10,10,10" Click="LoginButton_Click"/>
+    </Grid>
+</Window>
