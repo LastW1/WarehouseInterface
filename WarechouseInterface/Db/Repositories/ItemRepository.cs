@@ -37,7 +37,23 @@ namespace WarechouseInterface.Db.Repositories
                 MaxAllert = a.MaxAllert
             }); //gdy image jest null ładowac jakieś default zdjęcie
         }
+        public bool AddItem(ItemDbDto item)
+        {
+            var warechouseId = int.Parse(ConfigurationManager.AppSettings.Get("ActualWarehouseId"));
+            item.WarechouseId = warechouseId;
 
+            try
+            {
+                _databaseContext.Item.Add(item);
+                _databaseContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return true;
+        }
         public void SetImage()
         {
             var lol = File.ReadAllBytes(@"C:\Users\User\Desktop\yang.jpg");

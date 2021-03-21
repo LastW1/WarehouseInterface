@@ -19,6 +19,16 @@ namespace WarechouseInterface.Managers
             to.Show();
         }
 
+        public void RootFromToWindowOnTop(Window to)
+        {
+            to.Show();
+        }
+
+        public void TerminateWindow(Window widnow)
+        {
+            widnow.Close();
+        }
+
         public void ExitApp()
         {
             Environment.Exit(0);

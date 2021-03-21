@@ -253,6 +253,9 @@
     <Compile Include="Managers\SqlConnectManager.cs" />
     <Compile Include="Db\DatabaseContext.cs" />
     <Compile Include="Db\Repositories\PasswordRepository.cs" />
+    <Compile Include="Pages\AddItemPage.xaml.cs">
+      <DependentUpon>AddItemPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
@@ -261,6 +264,10 @@
     </Compile>
     <Compile Include="Tests\PasswordManagerTest.cs" />
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddItemPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -307,6 +314,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Images\addPictureImage.png" />
     <Content Include="Warechouse.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

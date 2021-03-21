@@ -12,69 +12,84 @@
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
     </Window.Resources>
-    
-    <Grid>
-        <DataGrid Name ="TestDataGrid" AutoGenerateColumns="False" CanUserResizeColumns="True" CanUserAddRows="false">
-            <DataGrid.Columns>
 
-                <DataGridTemplateColumn Width ="*" Header="Zdjęcie" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Picture}"></Image>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
 
-                <DataGridTemplateColumn Width ="*" Header="Kategoria" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Category}"></Label>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+            <Button Name="AddButton" Height="30" Width="Auto" Margin="20" Content="Dodaj Produkt" Click="AddButton_Click"/>
 
-                <DataGridTemplateColumn Width ="*" Header="Nazwa" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Name}"></Label>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+            <DataGrid Grid.Row="1" Grid.ColumnSpan="5" Name ="TestDataGrid" AutoGenerateColumns="False" CanUserResizeColumns="True" CanUserAddRows="false">
+                <DataGrid.Columns>
 
-                <DataGridTemplateColumn Width ="*" Header="Ilość" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Count}"></Label>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width ="*" Header="Zdjęcie" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Picture}"></Image>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Width ="*" Header="Cena" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Price}"></Label>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width ="*" Header="Kategoria" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Category}"></Label>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
+                    <DataGridTemplateColumn Width ="*" Header="Nazwa" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Name}"></Label>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Width ="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Click="Details_Click" CommandParameter="{Binding Path=Id}" Width ="Auto">Szczegóły</Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                
-                <DataGridTemplateColumn Width ="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Click="Edit_Click" CommandParameter="{Binding Path=Id}" Width ="Auto">Edycja</Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+                    <DataGridTemplateColumn Width ="*" Header="Ilość" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Count}"></Label>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width ="*" Header="Cena" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Price}"></Label>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width ="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="Details_Click" CommandParameter="{Binding Path=Id}" Width ="Auto">Szczegóły</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width ="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="Edit_Click" CommandParameter="{Binding Path=Id}" Width ="Auto">Edycja</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </ScrollViewer>
 </Window>

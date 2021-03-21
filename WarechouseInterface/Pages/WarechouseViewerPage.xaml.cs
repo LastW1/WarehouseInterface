@@ -1,58 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WarechouseInterface.Db.Repositories;
-using WarechouseInterface.Db.DbDtos;
 using WarechouseInterface.Repositories;
 using WarechouseInterface.Dtos;
+using WarechouseInterface.Managers;
 
 namespace WarechouseInterface.Pages
 {
-    /// <summary>
-    /// Interaction logic for WarechouseViewerPage.xaml
-    /// </summary>
     public partial class WarechouseViewerPage : Window
     {
         private ItemRepository _itemRepository;
+        private RootManager _rootManager;
 
-        public ObservableCollection<ItemDto> DataGridCollection = new ObservableCollection<ItemDto>();
+        public ObservableCollection<ItemDto> _dataGridCollection;
         public WarechouseViewerPage()
         {
             var context = new DatabaseContext();
             _itemRepository = new ItemRepository(context);
 
+            _rootManager = new RootManager();
+
             InitializeComponent();
 
             DataGridGenerator();
         }
-
-        private void DataGridGenerator()
+        public void DataGridGenerator()
         {
-            //_itemRepository.SetImage();
-
+            _dataGridCollection = new ObservableCollection<ItemDto>();
             var items = _itemRepository.GetItems().ToList();
 
             foreach (var item in items)
             {
-                DataGridCollection.Add(item);
+                _dataGridCollection.Add(item);
             }
 
-            TestDataGrid.ItemsSource = DataGridCollection;
-            //  TestDataGrid.Items.Refresh();
-
+            TestDataGrid.ItemsSource = _dataGridCollection;
+            TestDataGrid.Items.Refresh();
         }
 
         private void Details_Click(object sender, RoutedEventArgs e)
@@ -63,6 +48,11 @@ namespace WarechouseInterface.Pages
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             var itemId = (int)((Button)sender).CommandParameter;
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            _rootManager.RootFromToWindowOnTop(new AddItemPage(this));
         }
     }
 }
