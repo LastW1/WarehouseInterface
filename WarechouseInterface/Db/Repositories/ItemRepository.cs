@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.IO;
 using System.Linq;
 using WarechouseInterface.Db.DbDtos;
 using WarechouseInterface.Dtos;
@@ -77,12 +76,42 @@ namespace WarechouseInterface.Db.Repositories
 
             return true;
         }
-        public void SetImage()
-        {
-            var lol = File.ReadAllBytes(@"C:\Users\User\Desktop\yang.jpg");
 
-            var item = _databaseContext.Item.FirstOrDefault(a => a.Id == 1);
-            item.Picture = lol;
+        public bool EditItem(ItemDbDto item, bool isImageEdited)
+        {
+            var dbItem = _databaseContext.Item.First(a => a.Id == item.Id);
+
+            dbItem.CategoryId = item.CategoryId;
+            dbItem.Name = item.Name;
+            dbItem.Price = item.Price;
+            dbItem.Count = item.Count;
+            dbItem.Describe = item.Describe;
+            dbItem.Location = item.Location;
+            dbItem.AdditionalInfo = item.AdditionalInfo;
+            dbItem.MinAllert = item.MinAllert;
+            dbItem.MaxAllert = item.MaxAllert;
+
+            if (isImageEdited)
+            {
+                dbItem.Picture = item.Picture;
+            }
+
+            try
+            {
+                _databaseContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public void RemoveItem(int itemId)
+        {
+            var item = _databaseContext.Item.First(a => a.Id == itemId);
+            _databaseContext.Remove(item);
             _databaseContext.SaveChanges();
         }
     }

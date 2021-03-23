@@ -4,11 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WarechouseInterface.Pages"
-        WindowStyle="None"
+        BorderBrush="Black"
+        BorderThickness="4"
+        WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="AddCategoryPage" Height="130" Width="300">
+        Title="" Height="160" Width="350">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

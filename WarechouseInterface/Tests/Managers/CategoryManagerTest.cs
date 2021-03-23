@@ -5,6 +5,7 @@ using WarechouseInterface.Repositories;
 
 namespace WarechouseInterface.Tests
 {
+    [TestFixture]
     class CategoryManagerTest
     {
         private DatabaseContext _databaseContext;

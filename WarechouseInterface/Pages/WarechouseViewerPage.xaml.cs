@@ -14,17 +14,20 @@ namespace WarechouseInterface.Pages
         private string _searchCategory = null;
         private string _searchName = null;
 
+        private SettingsPage _settingsPage;
         private ItemRepository _itemRepository;
         private RootManager _rootManager;
 
         public ObservableCollection<ItemDto> _dataGridCollection;
-        public WarechouseViewerPage()
+        public WarechouseViewerPage(SettingsPage settingsPage)
         {
+            _settingsPage = settingsPage;
+
             var context = new DatabaseContext();
             _itemRepository = new ItemRepository(context);
 
             _rootManager = new RootManager();
-
+        
             InitializeComponent();
 
             DataGridGenerator();
@@ -32,7 +35,7 @@ namespace WarechouseInterface.Pages
         public void DataGridGenerator()
         {
             _dataGridCollection = new ObservableCollection<ItemDto>();
-            //  var items = _itemRepository.GetItems().ToList();
+
             var items = _itemRepository.GetItemsByNameAndCategory(_searchCategory, _searchName).ToList();
 
             foreach (var item in items)
@@ -70,6 +73,11 @@ namespace WarechouseInterface.Pages
         {
             _searchName = NameTextBox.Text;
             DataGridGenerator();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            _rootManager.CloseFromShowTo(this, _settingsPage);
         }
     }
 }

@@ -19,6 +19,12 @@ namespace WarechouseInterface.Managers
             to.Show();
         }
 
+        public void CloseFromShowTo(Window from, Window to)
+        {
+            to.Show();
+            from.Close();
+        }
+
         public void RootFromToWindowOnTop(Window to)
         {
             to.Show();

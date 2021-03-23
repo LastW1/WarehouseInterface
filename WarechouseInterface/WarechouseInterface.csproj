@@ -250,6 +250,7 @@
     <Compile Include="Db\Repositories\ItemRepository.cs" />
     <Compile Include="Dtos\ItemDto.cs" />
     <Compile Include="Managers\CategoryManager.cs" />
+    <Compile Include="Managers\ImageManager.cs" />
     <Compile Include="Managers\PasswordManager.cs" />
     <Compile Include="Managers\SqlConnectManager.cs" />
     <Compile Include="Db\DatabaseContext.cs" />
@@ -269,8 +270,11 @@
     <Compile Include="Pages\WarechouseViewerPage.xaml.cs">
       <DependentUpon>WarechouseViewerPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tests\CategoryManagerTest.cs" />
-    <Compile Include="Tests\PasswordManagerTest.cs" />
+    <Compile Include="Tests\Managers\CategoryManagerTest.cs" />
+    <Compile Include="Tests\Managers\PasswordManagerTest.cs" />
+    <Compile Include="Tests\Validators\ItemValidatorTest.cs" />
+    <Compile Include="Validators\ItemValidator.cs" />
+    <Compile Include="Validators\TextBoxValidator.cs" />
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
