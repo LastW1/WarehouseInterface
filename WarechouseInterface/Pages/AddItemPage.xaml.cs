@@ -1,4 +1,6 @@
 ﻿using Microsoft.Win32;
+using NUnit.Core;
+using NUnit.Framework;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -16,24 +18,23 @@ using WarechouseInterface.Repositories;
 
 namespace WarechouseInterface.Pages
 {
-    /// <summary>
-    /// Interaction logic for AddItemPage.xaml
-    /// </summary>
     public partial class AddItemPage : Window
     {
         private CategoryRepository _categoryRepository;
         private ItemRepository _itemRepository;
         private RootManager _rootManager;
+        private CategoryManager _categoryManager;
 
         private WarechouseViewerPage _warechouseViewerPage;
 
         public ObservableCollection<CategoryDbDto> CategoryComboItems { get; set; }
         public AddItemPage(WarechouseViewerPage warechouseViewWindow)
         {
-             // If item.Name == "JEBAĆ PIS" then gratulację i przekierowanie na yt
-             var context = new DatabaseContext();
+            // If item.Name == "JEBAĆ PIS" then gratulację i przekierowanie na yt
+            var context = new DatabaseContext();
             _categoryRepository = new CategoryRepository(context);
             _itemRepository = new ItemRepository(context);
+            _categoryManager = new CategoryManager(context);
 
             _warechouseViewerPage = warechouseViewWindow;
 
@@ -41,11 +42,21 @@ namespace WarechouseInterface.Pages
 
             InitializeComponent();
 
-            LoadCategoryCombo();
+            ReloadCategoryCombo(null);
 
             DataContext = this; // nie mam pojęcia po co to ale bez tego combo box się nie ładuje xD
         }
+        public void ReloadCategoryCombo(int? categoryId)
+        {
+            CategoryComboItems = _categoryManager.LoadCategoryCombo();
 
+            CategoryComboBox.ItemsSource = CategoryComboItems;
+
+            if (categoryId != null)
+            {
+                CategoryComboBox.SelectedItem = CategoryComboItems.FirstOrDefault(a => a.Id == categoryId);
+            }
+        }
         private void ImageButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new Microsoft.Win32.OpenFileDialog();
@@ -57,18 +68,6 @@ namespace WarechouseInterface.Pages
                 string filePath = dialog.FileName;
 
                 ImageButtonImage.Source = new BitmapImage(new Uri(filePath));
-            }
-        }
-
-        private void LoadCategoryCombo()
-        {
-            var items = _categoryRepository.GetCategories();
-
-            CategoryComboItems = new ObservableCollection<CategoryDbDto>();
-
-            foreach(var item in items)
-            {
-                CategoryComboItems.Add(item);
             }
         }
 
@@ -103,11 +102,29 @@ namespace WarechouseInterface.Pages
                 _rootManager.TerminateWindow(this);
             }
         }
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e) // do validation managera
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
+        private void DecimalValidationTextBox(object sender, TextCompositionEventArgs e) // do validation managera
+        {
+            // Regex regex = new Regex(@"^[0-9]([\.\,][0-9]{1,3})?$");
+            // e.Handled = regex.IsMatch(e.Text);
+            //  e.Handled = Decimal.TryParse(e.Text, out var dummy);
+
+            var textBox = (System.Windows.Controls.TextBox)sender;
+
+            var text = e.Text;
+
+
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(text);
+            //e.Handled = true;
+        }
+
 
         private bool ValidateItem()
         {
@@ -144,6 +161,11 @@ namespace WarechouseInterface.Pages
             var imagePath = image.Source.ToString().Replace("file:///","");
 
             return File.ReadAllBytes(imagePath);
+        }
+
+        private void CategoryAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            _rootManager.RootFromToWindowOnTop(new AddCategoryPage(this));
         }
     }
 }

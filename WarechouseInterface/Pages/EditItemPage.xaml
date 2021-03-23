@@ -1,12 +1,11 @@
-﻿<Window x:Class="WarechouseInterface.Pages.AddItemPage"
+﻿<Window x:Class="WarechouseInterface.Pages.EditItemPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WarechouseInterface.Pages"
         mc:Ignorable="d"
-        Title="AddItemPage" Height="650" Width="500">
-
+        Title="EditItemPage" Height="450" Width="800">
     <Window.Resources>
         <Style x:Key="ItemTextBlockStyle" TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -46,8 +45,8 @@
 
             <TextBlock Grid.Row ="0" Grid.Column="0" Text="Nazwa" Style="{StaticResource ItemTextBlockStyle}"/>
             <TextBox Grid.Row ="0" Grid.Column="2" Name="NameTextBox" Style="{StaticResource ItemTextBoxStyle}"/>
-            
-            <TextBlock Grid.Row ="1" Grid.Column="0" Text="Kategoria" Style="{StaticResource ItemTextBlockStyle}"/>
+
+            <TextBlock Grid.Row ="1" Grid.Column="0" Text="Kategoria tutaj zrobić dropbox" Style="{StaticResource ItemTextBlockStyle}"/>
             <Grid Grid.Row="1" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"/>
@@ -56,8 +55,8 @@
                 <ComboBox Grid.Column="0" Name="CategoryComboBox" Margin="20" MinHeight="30" ItemsSource="{Binding CategoryComboItems}"  DisplayMemberPath="Name" SelectedValuePath="Id"/>
                 <Button Name="CategoryAddButton" Grid.Column="1" Margin="10" MinHeight="30" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" VerticalAlignment="Center" HorizontalAlignment="Center" Content="+" Click="CategoryAddButton_Click"/>
             </Grid>
-            
-                    <TextBlock Grid.Row ="2" Grid.Column="0" Text="Picture" Style="{StaticResource ItemTextBlockStyle}"/>
+
+            <TextBlock Grid.Row ="2" Grid.Column="0" Text="Picture" Style="{StaticResource ItemTextBlockStyle}"/>
             <Button Grid.Row ="2" Grid.Column="1" Name="ImageButton" MinHeight="200" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" Click="ImageButton_Click">
                 <Image Name="ImageButtonImage" Stretch="UniformToFill" Source="/WarechouseInterface;component/Images/addPictureImage.png"/>
             </Button>
@@ -66,7 +65,7 @@
             <TextBox Grid.Row ="3" Grid.Column="2" Name="CountTextBox"  Style="{StaticResource ItemTextBoxStyle}" PreviewTextInput="NumberValidationTextBox"/>
 
             <TextBlock Grid.Row ="4" Grid.Column="0" Text="Cena:" Style="{StaticResource ItemTextBlockStyle}"/>
-            <TextBox Grid.Row ="4" Grid.Column="2" Name="PriceTextBox"  Style="{StaticResource ItemTextBoxStyle}" PreviewTextInput="DecimalValidationTextBox"/>
+            <TextBox Grid.Row ="4" Grid.Column="2" Name="PriceTextBox"  Style="{StaticResource ItemTextBoxStyle}"/>
 
             <TextBlock Grid.Row ="5" Grid.Column="0" Text="Opis:" Style="{StaticResource ItemTextBlockStyle}"/>
             <TextBox Grid.Row ="5" Grid.Column="2" Name="DescrieTextBox"  Style="{StaticResource ItemTextBoxStyle}"/>
@@ -83,9 +82,20 @@
             <TextBlock Grid.Row ="9" Grid.Column="0" Text="Alert maksymalnego Stanu:" Style="{StaticResource ItemTextBlockStyle}"/>
             <TextBox Grid.Row ="9" Grid.Column="2" Name="MaxAllertTextBox"  Style="{StaticResource ItemTextBoxStyle}" PreviewTextInput="NumberValidationTextBox"/>
 
-            <Button Grid.Row ="10" Grid.Column="1" Content="Dodaj Produkt" x:Name="AddItemButon" Margin="20" MinHeight="30" Click="AddItemButon_Click"/>
             <Button Grid.Row ="10" Grid.Column="0" Content="Powrót" x:Name="GoBackButton" Margin="20" MinHeight="30" Click="GoBackButton_Click"/>
 
-        </Grid>
+            <Grid Grid.Row="10" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Content="Zapisz Zmiany" x:Name="DeleteBuddton" Margin="20" MinHeight="30" Background="#FFF10D0D" Click="DeleteBuddton_Click"/>
+                <Button Grid.Column="1" Content="Zapisz Zmiany" x:Name="SaveButton" Margin="20" MinHeight="30" Click="SaveButton_Click"/>
+            </Grid>
+            </Grid>
     </ScrollViewer>
 </Window>

@@ -249,12 +249,19 @@
     <Compile Include="Db\Repositories\CategoryRepository.cs" />
     <Compile Include="Db\Repositories\ItemRepository.cs" />
     <Compile Include="Dtos\ItemDto.cs" />
+    <Compile Include="Managers\CategoryManager.cs" />
     <Compile Include="Managers\PasswordManager.cs" />
     <Compile Include="Managers\SqlConnectManager.cs" />
     <Compile Include="Db\DatabaseContext.cs" />
     <Compile Include="Db\Repositories\PasswordRepository.cs" />
+    <Compile Include="Pages\AddCategoryPage.xaml.cs">
+      <DependentUpon>AddCategoryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddItemPage.xaml.cs">
       <DependentUpon>AddItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditItemPage.xaml.cs">
+      <DependentUpon>EditItemPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -262,12 +269,21 @@
     <Compile Include="Pages\WarechouseViewerPage.xaml.cs">
       <DependentUpon>WarechouseViewerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tests\CategoryManagerTest.cs" />
     <Compile Include="Tests\PasswordManagerTest.cs" />
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddCategoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddItemPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditItemPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -14,6 +14,8 @@ namespace WarechouseInterface.Repositories
         public DatabaseContext(bool isTest = false)
         {
             _isTest = isTest;
+
+            //jeśli jest to test to przestawić automatycznie na werechouse = 1;
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {

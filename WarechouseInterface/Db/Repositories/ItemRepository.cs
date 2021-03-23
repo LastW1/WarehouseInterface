@@ -17,6 +17,12 @@ namespace WarechouseInterface.Db.Repositories
             _databaseContext = context;
         }
 
+        public ItemDbDto GetItemById(int itemId)
+        {
+            var warechouseId = int.Parse(ConfigurationManager.AppSettings.Get("ActualWarehouseId"));
+
+            return _databaseContext.Item.FirstOrDefault(a => a.WarechouseId == warechouseId && a.Id == itemId);
+        }
         public IEnumerable<ItemDto> GetItems()
         {
             var warechouseId = int.Parse(ConfigurationManager.AppSettings.Get("ActualWarehouseId"));
@@ -35,8 +41,25 @@ namespace WarechouseInterface.Db.Repositories
                 AdditionalInfo = a.AdditionalInfo,
                 MinAllert = a.MinAllert,
                 MaxAllert = a.MaxAllert
-            }); //gdy image jest null ładowac jakieś default zdjęcie
+            });
         }
+
+        public IEnumerable<ItemDto> GetItemsByNameAndCategory(string category, string name)
+        {
+            var items = GetItems();
+
+            if (category != null && !category.Equals(""))
+            {
+                items = items.Where(a => a.Category.ToLower().Contains(category.ToLower()));
+            }
+            if (name != null && !name.Equals(""))
+            {
+                items = items.Where(a => a.Name.ToLower().Contains(name.ToLower()));
+            }
+
+            return items;
+        }
+
         public bool AddItem(ItemDbDto item)
         {
             var warechouseId = int.Parse(ConfigurationManager.AppSettings.Get("ActualWarehouseId"));

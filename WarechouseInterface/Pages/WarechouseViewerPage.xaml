@@ -27,7 +27,27 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Name="AddButton" Height="30" Width="Auto" Margin="20" Content="Dodaj Produkt" Click="AddButton_Click"/>
+
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Wyszukiwanie:" Height="20" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Kategoria:" Height="20" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="Nazwa:" Height="20" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                
+                <TextBox Grid.Row="2" Grid.Column="0" Name="CategoryTextBox" Height="20" Width="Auto" Margin="10" TextChanged="CategoryTextBox_TextChanged"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Name="NameTextBox" Height="20" Width="Auto" Margin="10" TextChanged="NameTextBox_TextChanged"/>
+            </Grid>
+                    
+            <Button Grid.Row="0" Grid.Column="2" Name="AddButton" Height="30" Width="Auto" Margin="20" Content="Dodaj Produkt" Click="AddButton_Click"/>
 
             <DataGrid Grid.Row="1" Grid.ColumnSpan="5" Name ="TestDataGrid" AutoGenerateColumns="False" CanUserResizeColumns="True" CanUserAddRows="false">
                 <DataGrid.Columns>
