@@ -63,6 +63,7 @@ namespace WarechouseInterface.Pages
         private void Details_Click(object sender, RoutedEventArgs e)
         {
             var itemId = (int)((Button)sender).CommandParameter;
+            _rootManager.RootFromToWindowOnTop(new DetailsPage(itemId));
         }
 
         private void SelectItemButton_Click(object sender, RoutedEventArgs e)

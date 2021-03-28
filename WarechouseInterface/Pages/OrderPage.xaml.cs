@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -15,6 +14,7 @@ using WarechouseInterface.Validators;
 
 namespace WarechouseInterface.Pages
 {
+    // większość tego kodu do managera
     public partial class OrderPage : Window
     {
         public bool _isSearchAlive = false;

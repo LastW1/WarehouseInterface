@@ -270,6 +270,9 @@
     <Compile Include="Pages\AddItemPage.xaml.cs">
       <DependentUpon>AddItemPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DetailsPage.xaml.cs">
+      <DependentUpon>DetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EditItemPage.xaml.cs">
       <DependentUpon>EditItemPage.xaml</DependentUpon>
     </Compile>
@@ -299,6 +302,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AddItemPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -358,6 +365,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Resource Include="Images\addPictureImage.png" />
+    <Resource Include="Images\noImage.png" />
     <Content Include="Warechouse.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

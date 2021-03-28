@@ -21,9 +21,7 @@ using WarechouseInterface.Validators;
 
 namespace WarechouseInterface.Pages
 {
-    /// <summary>
-    /// Interaction logic for EditItemPage.xaml
-    /// </summary>
+    // zrobić szersze okna dla opisów z zawijaniem
     public partial class EditItemPage : Window
     {
         public ObservableCollection<CategoryDbDto> _comboCollection { get; set; }
