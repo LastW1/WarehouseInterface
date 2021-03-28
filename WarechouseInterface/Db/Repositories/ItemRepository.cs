@@ -22,6 +22,27 @@ namespace WarechouseInterface.Db.Repositories
 
             return _databaseContext.Item.FirstOrDefault(a => a.WarechouseId == warechouseId && a.Id == itemId);
         }
+
+        public IEnumerable<ItemDto> GetItemsByIds(IEnumerable<int> itemIds)
+        {
+            var warechouseId = int.Parse(ConfigurationManager.AppSettings.Get("ActualWarehouseId"));
+
+            return _databaseContext.Item.Where(a => a.WarechouseId == warechouseId && itemIds.Contains(a.Id))
+                .Select(a => new ItemDto
+                {
+                    Id = a.Id,
+                    Category = _databaseContext.Category.FirstOrDefault(c => c.Id == a.CategoryId).Name,
+                    Picture = a.Picture,
+                    Name = a.Name,
+                    Price = a.Price,
+                    Count = a.Count,
+                    Describe = a.Describe,
+                    Location = a.Location,
+                    AdditionalInfo = a.AdditionalInfo,
+                    MinAllert = a.MinAllert,
+                    MaxAllert = a.MaxAllert
+                }); ;
+        }
         public IEnumerable<ItemDto> GetItems()
         {
             var warechouseId = int.Parse(ConfigurationManager.AppSettings.Get("ActualWarehouseId"));
@@ -106,6 +127,20 @@ namespace WarechouseInterface.Db.Repositories
             }
 
             return true;
+        }
+
+        public void DecrementItem(int itemId, int decrementCount)
+        {
+            var item = GetItemById(itemId);
+
+            if(item.Count < decrementCount)
+            {
+                throw new Exception($"Dekrementacja niemożliwa, niewystarczająca ilość produktu: {item.Name}");
+            }
+
+            item.Count -= decrementCount;
+
+            _databaseContext.SaveChanges();
         }
 
         public void RemoveItem(int itemId)

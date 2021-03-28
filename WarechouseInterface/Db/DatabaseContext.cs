@@ -10,6 +10,9 @@ namespace WarechouseInterface.Repositories
         public DbSet<PasswordDbDto> Password { get; set; }
         public DbSet<ItemDbDto> Item { get; set; }
         public DbSet<CategoryDbDto> Category { get; set; }
+        public DbSet<TransactionDbDto> Transaction { get; set; }
+        public DbSet<TransactionTypeDbDto> TransactionType { get; set; }
+        public DbSet<TransactionItemsDbDto> TransactionItem { get; set; }
 
         public DatabaseContext(bool isTest = false)
         {

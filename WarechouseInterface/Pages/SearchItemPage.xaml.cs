@@ -1,37 +1,38 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WarechouseInterface.Db.Repositories;
-using WarechouseInterface.Repositories;
 using WarechouseInterface.Dtos;
 using WarechouseInterface.Managers;
+using WarechouseInterface.Repositories;
 
 namespace WarechouseInterface.Pages
 {
-    public partial class WarechouseViewerPage : Window
+    public partial class SearchItemPage : Window
     {
         private string _searchCategory = null;
         private string _searchName = null;
 
-        private SettingsPage _settingsPage;
+        private OrderPage _orderPage;
         private ItemRepository _itemRepository;
         private RootManager _rootManager;
 
         public ObservableCollection<ItemDto> _dataGridCollection;
-        public WarechouseViewerPage(SettingsPage settingsPage)
+        public SearchItemPage(OrderPage orderPage)
         {
-            _settingsPage = settingsPage;
+            _orderPage = orderPage;
 
             var context = new DatabaseContext();
             _itemRepository = new ItemRepository(context);
-
             _rootManager = new RootManager();
-        
             InitializeComponent();
-
             DataGridGenerator();
+
+            _orderPage._isSearchAlive = true;
         }
+
         public void DataGridGenerator()
         {
             _dataGridCollection = new ObservableCollection<ItemDto>();
@@ -47,22 +48,6 @@ namespace WarechouseInterface.Pages
             TestDataGrid.Items.Refresh();
         }
 
-        private void Details_Click(object sender, RoutedEventArgs e)
-        {
-            var itemId = (int)((Button)sender).CommandParameter;
-        }
-
-        private void Edit_Click(object sender, RoutedEventArgs e)
-        {
-            var itemId = (int)((Button)sender).CommandParameter;
-            _rootManager.RootFromToWindowOnTop(new EditItemPage(this, itemId));
-        }
-
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            _rootManager.RootFromToWindowOnTop(new AddItemPage(this));
-        }
-
         private void CategoryTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             _searchCategory = CategoryTextBox.Text;
@@ -75,14 +60,30 @@ namespace WarechouseInterface.Pages
             DataGridGenerator();
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        private void Details_Click(object sender, RoutedEventArgs e)
         {
-            _rootManager.CloseFromShowTo(this, _settingsPage);
+            var itemId = (int)((Button)sender).CommandParameter;
         }
 
-        private void ZamowienieButton_Click(object sender, RoutedEventArgs e)
+        private void SelectItemButton_Click(object sender, RoutedEventArgs e)
         {
-            _rootManager.RootFromTo(this, new OrderPage(this));
+            List<int> selectedItems = new List<int>();
+
+            foreach(var item in TestDataGrid.SelectedItems)
+            {
+                selectedItems.Add(((ItemDto)item).Id);
+            };  
+
+            if(selectedItems.Count > 0)
+            {
+                _orderPage.AddItems(selectedItems);
+            }
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            _orderPage._isSearchAlive = false;
+            _rootManager.TerminateWindow(this);
         }
     }
 }
