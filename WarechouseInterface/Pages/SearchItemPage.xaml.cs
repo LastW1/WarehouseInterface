@@ -16,21 +16,43 @@ namespace WarechouseInterface.Pages
         private string _searchName = null;
 
         private OrderPage _orderPage;
+        private SupplyPage _supplyPage;
         private ItemRepository _itemRepository;
         private RootManager _rootManager;
+        private ReturnPage _returnPage;
 
         public ObservableCollection<ItemDto> _dataGridCollection;
+        public SearchItemPage(SupplyPage supplyPage)
+        {
+            _supplyPage = supplyPage;
+            _supplyPage._isSearchAlive = true;
+
+            BaseConstructor();
+        }
+
         public SearchItemPage(OrderPage orderPage)
         {
             _orderPage = orderPage;
+            _orderPage._isSearchAlive = true;
 
+            BaseConstructor();
+        }
+
+        public SearchItemPage(ReturnPage returnPage)
+        {
+            _returnPage = returnPage;
+            _returnPage._isSearchAlive = true;
+
+            BaseConstructor();
+        }
+
+        public void BaseConstructor()
+        {
             var context = new DatabaseContext();
             _itemRepository = new ItemRepository(context);
             _rootManager = new RootManager();
             InitializeComponent();
             DataGridGenerator();
-
-            _orderPage._isSearchAlive = true;
         }
 
         public void DataGridGenerator()
@@ -77,14 +99,39 @@ namespace WarechouseInterface.Pages
 
             if(selectedItems.Count > 0)
             {
-                _orderPage.AddItems(selectedItems);
+                if (_orderPage != null)
+                {
+                    _orderPage.AddItems(selectedItems);
+                }
+                else if(_supplyPage != null)
+                {
+                    _supplyPage.AddItems(selectedItems);
+                }
+                else if (_returnPage != null)
+                {
+                    _returnPage.AddItems(selectedItems);
+                }
             }
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            _orderPage._isSearchAlive = false;
-            _rootManager.TerminateWindow(this);
+            if(_orderPage != null)
+            {
+                _orderPage._isSearchAlive = false;
+                _rootManager.TerminateWindow(this);
+            }
+            else if (_supplyPage != null)
+            {
+                _supplyPage._isSearchAlive = false;
+                _rootManager.TerminateWindow(this);
+            }
+            else if (_returnPage != null)
+            {
+                _returnPage._isSearchAlive = false;
+                _rootManager.TerminateWindow(this);
+            }
+
         }
     }
 }

@@ -20,14 +20,14 @@ namespace WarechouseInterface.Db.Repositories
         {
             var warechouseId = int.Parse(ConfigurationManager.AppSettings.Get("ActualWarehouseId"));
 
-            return _databaseContext.Item.FirstOrDefault(a => a.WarechouseId == warechouseId && a.Id == itemId);
+            return _databaseContext.Item.FirstOrDefault(a => a.WarechouseId == warechouseId && a.Id == itemId && a.DataK == null);
         }
 
         public IEnumerable<ItemDto> GetItemsByIds(IEnumerable<int> itemIds)
         {
             var warechouseId = int.Parse(ConfigurationManager.AppSettings.Get("ActualWarehouseId"));
 
-            return _databaseContext.Item.Where(a => a.WarechouseId == warechouseId && itemIds.Contains(a.Id))
+            return _databaseContext.Item.Where(a => a.WarechouseId == warechouseId && itemIds.Contains(a.Id) && a.DataK == null)
                 .Select(a => new ItemDto
                 {
                     Id = a.Id,
@@ -40,7 +40,8 @@ namespace WarechouseInterface.Db.Repositories
                     Location = a.Location,
                     AdditionalInfo = a.AdditionalInfo,
                     MinAllert = a.MinAllert,
-                    MaxAllert = a.MaxAllert
+                    MaxAllert = a.MaxAllert,
+                    Allert = (a.Count <= a.MinAllert || a.Count >= a.MaxAllert)
                 }); ;
         }
         public IEnumerable<ItemDto> GetItems()
@@ -48,7 +49,7 @@ namespace WarechouseInterface.Db.Repositories
             var warechouseId = int.Parse(ConfigurationManager.AppSettings.Get("ActualWarehouseId"));
 
             var wtf = _databaseContext.Item.Where(a => a.WarechouseId == warechouseId).ToList();
-            return _databaseContext.Item.Where(a => a.WarechouseId == warechouseId).Select(a => new ItemDto
+            return _databaseContext.Item.Where(a => a.WarechouseId == warechouseId && a.DataK == null).Select(a => new ItemDto
             {
                 Id = a.Id,
                 Category = _databaseContext.Category.FirstOrDefault(c => c.Id == a.CategoryId).Name,
@@ -60,7 +61,8 @@ namespace WarechouseInterface.Db.Repositories
                 Location = a.Location,
                 AdditionalInfo = a.AdditionalInfo,
                 MinAllert = a.MinAllert,
-                MaxAllert = a.MaxAllert
+                MaxAllert = a.MaxAllert,
+                Allert = (a.Count <= a.MinAllert || a.Count >= a.MaxAllert)
             });
         }
 
@@ -78,6 +80,11 @@ namespace WarechouseInterface.Db.Repositories
             }
 
             return items;
+        }
+
+        public IEnumerable<ItemDto> GetAllertItemsBynameAndCategory(string category, string name)
+        {
+            return GetItemsByNameAndCategory(category, name).Where(a => a.Allert);
         }
 
         public bool AddItem(ItemDbDto item)
@@ -143,10 +150,19 @@ namespace WarechouseInterface.Db.Repositories
             _databaseContext.SaveChanges();
         }
 
+        public void IncrementItem(int itemId, int incrementCount)
+        {
+            var item = GetItemById(itemId);
+
+            item.Count += incrementCount;
+
+            _databaseContext.SaveChanges();
+        }
+
         public void RemoveItem(int itemId)
         {
             var item = _databaseContext.Item.First(a => a.Id == itemId);
-            _databaseContext.Remove(item);
+            item.DataK = DateTime.Now;
             _databaseContext.SaveChanges();
         }
     }

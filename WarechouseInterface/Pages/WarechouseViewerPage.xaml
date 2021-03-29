@@ -53,11 +53,23 @@
 
         <Button Grid.Row="0" Grid.Column="2" Name="AddButton" Height="30" Width="Auto" Margin="20" Content="Dodaj Produkt" Click="AddButton_Click"/>
 
+        <Button Grid.Row="0" Grid.Column="4" Name="AllertButton" Height="30" Width="Auto" Margin="20" Content="Stany Alarmowe" Click="AllertButton_Click"/>
+
         <Grid Grid.Row="1" Grid.ColumnSpan="5">
             <ScrollViewer>
                 <DataGrid Name ="TestDataGrid" AutoGenerateColumns="False" CanUserResizeColumns="True" CanUserAddRows="false">
-                    <DataGrid.Columns>
+                    
+                    <DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Allert}" Value="True">
+                                    <Setter Property="Background" Value="Red" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.CellStyle>
 
+                    <DataGrid.Columns>
                         <DataGridTemplateColumn Width ="*" Header="Zdjęcie" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -121,7 +133,7 @@
         <Button Grid.Row="2" Grid.Column="0" Name="BackButton" Content="Powrót" MinHeight="30" VerticalAlignment="Bottom" Click="BackButton_Click" Margin="10"/>
 
         <Button Grid.Row="2" Grid.Column="2" Name="ZamowienieButton" Content="Zamówienie" MinHeight="30" VerticalAlignment="Bottom"  Margin="10" Click="ZamowienieButton_Click"/>
-        <Button Grid.Row="2" Grid.Column="3" Name="DostawaButton" Content="Dostawa" MinHeight="30" VerticalAlignment="Bottom" Click="BackButton_Click" Margin="10"/>
-        <Button Grid.Row="2" Grid.Column="4" Name="ZwrotButton" Content="Zwrot" MinHeight="30" VerticalAlignment="Bottom" Click="BackButton_Click" Margin="10"/>
+        <Button Grid.Row="2" Grid.Column="3" Name="SupplyButton" Content="Dostawa" MinHeight="30" VerticalAlignment="Bottom" Margin="10" Click="SupplyButton_Click"/>
+        <Button Grid.Row="2" Grid.Column="4" Name="ReturnButton" Content="Zwrot" MinHeight="30" VerticalAlignment="Bottom" Margin="10" Click="ReturnButton_Click"/>
     </Grid>
 </Window>

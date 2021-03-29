@@ -23,9 +23,8 @@ namespace WarechouseInterface.Managers
             _itemRepository = new ItemRepository(context);
         }
 
-        public void AddTransaction(FullTransactionDto transaction)
+        public void AddOrderTransaction(FullTransactionDto transaction)
         {
-            // odejmować liczbę produktów
             var transactionType = _transactionTypeRepository.GetOrderType();
 
             var transactionId = _transactionRepository.AddTransaction(transactionType , transaction.Describe);
@@ -33,6 +32,36 @@ namespace WarechouseInterface.Managers
             foreach(var transactionItem in transaction.Items)
             {
                 _itemRepository.DecrementItem(transactionItem.ItemId, transactionItem.Count);
+
+                transactionItem.TransactionId = transactionId;
+                _transactionItemsRepository.AddItemForTransaction(transactionItem);
+            }
+        }
+
+        public void AddSupplyTransaction(FullTransactionDto transaction)
+        {
+            var transactionType = _transactionTypeRepository.GetSupplyType();
+
+            var transactionId = _transactionRepository.AddTransaction(transactionType, transaction.Describe);
+
+            foreach (var transactionItem in transaction.Items)
+            {
+                _itemRepository.IncrementItem(transactionItem.ItemId, transactionItem.Count);
+
+                transactionItem.TransactionId = transactionId;
+                _transactionItemsRepository.AddItemForTransaction(transactionItem);
+            }
+        }
+
+        public void AddReturnTransaction(FullTransactionDto transaction)
+        {
+            var transactionType = _transactionTypeRepository.GetReturnType();
+
+            var transactionId = _transactionRepository.AddTransaction(transactionType, transaction.Describe);
+
+            foreach (var transactionItem in transaction.Items)
+            {
+                _itemRepository.IncrementItem(transactionItem.ItemId, transactionItem.Count);
 
                 transactionItem.TransactionId = transactionId;
                 _transactionItemsRepository.AddItemForTransaction(transactionItem);

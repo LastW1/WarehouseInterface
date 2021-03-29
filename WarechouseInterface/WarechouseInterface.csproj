@@ -279,11 +279,17 @@
     <Compile Include="Pages\OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ReturnPage.xaml.cs">
+      <DependentUpon>ReturnPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SearchItemPage.xaml.cs">
       <DependentUpon>SearchItemPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SupplyPage.xaml.cs">
+      <DependentUpon>SupplyPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\WarechouseViewerPage.xaml.cs">
       <DependentUpon>WarechouseViewerPage.xaml</DependentUpon>
@@ -321,11 +327,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ReturnPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SearchItemPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SupplyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

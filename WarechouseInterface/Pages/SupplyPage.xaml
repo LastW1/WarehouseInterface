@@ -1,0 +1,87 @@
+﻿<Window x:Class="WarechouseInterface.Pages.SupplyPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WarechouseInterface.Pages"
+        mc:Ignorable="d"
+       BorderBrush="Black"
+        BorderThickness="4"
+        WindowStartupLocation="CenterScreen"
+        
+        Title="" Height="500" Width="500">
+
+    <Window.Resources>
+        <Style x:Key="CenterGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+            <ScrollViewer>
+                <DataGrid Name ="TestDataGrid" AutoGenerateColumns="False" CanUserResizeColumns="True" CanUserAddRows="false">
+                    <DataGrid.Columns>
+
+                        <DataGridTemplateColumn Width ="1*" Header="Kategoria" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Category}"></Label>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width ="1*" Header="Nazwa" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Name}"></Label>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width ="1*" Header="Ilość" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox x:Name="CountLabel" HorizontalAlignment="Center" VerticalAlignment="Center" Uid="{Binding Id}" Text="{Binding Count}" PreviewTextInput="NumberValidationTextBox" TextChanged="CountLabel_TextChanged"></TextBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width ="Auto" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="RemoveButton" Content="X" MinWidth="20" Uid="{Binding Id}" Click="RemoveButton_Click"></Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+        </Grid>
+
+        <Button x:Name="SelectItemButton" Grid.ColumnSpan="4" Grid.Row="0" MinHeight="30" Content="Dodaj produkt do listy" Click="SelectItemButton_Click"/>
+
+        <TextBlock  Grid.ColumnSpan="4" Grid.Row="3" MinHeight="30" Text="Opis Dostawy:" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+
+        <TextBox Name="OrdetTextBox"  Grid.ColumnSpan="4" Grid.Row="4" Margin="10" TextWrapping="Wrap"/>
+
+        <Button Name="GoBackButton" Grid.Column="0" Grid.Row="5" MinHeight="30" Margin="10" Content="Powrót" Click="GoBackButton_Click"/>
+        <Button Name="AddSupplyButton" Grid.Column="3" Grid.Row="5" MinHeight="30" Margin="10" Content="Stwórz" Click="AddSupplyButton_Click"/>
+    </Grid>
+</Window>

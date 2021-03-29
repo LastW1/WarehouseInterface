@@ -6,11 +6,13 @@ using WarechouseInterface.Db.Repositories;
 using WarechouseInterface.Repositories;
 using WarechouseInterface.Dtos;
 using WarechouseInterface.Managers;
+using System.Collections.Generic;
 
 namespace WarechouseInterface.Pages
 {
     public partial class WarechouseViewerPage : Window
     {
+        private bool _isAllertView = false;
         private string _searchCategory = null;
         private string _searchName = null;
 
@@ -36,7 +38,16 @@ namespace WarechouseInterface.Pages
         {
             _dataGridCollection = new ObservableCollection<ItemDto>();
 
-            var items = _itemRepository.GetItemsByNameAndCategory(_searchCategory, _searchName).ToList();
+            List<ItemDto> items;
+
+            if (_isAllertView)
+            {
+                items = _itemRepository.GetAllertItemsBynameAndCategory(_searchCategory, _searchName).ToList();
+            }
+            else
+            {
+                items = _itemRepository.GetItemsByNameAndCategory(_searchCategory, _searchName).ToList();
+            }       
 
             foreach (var item in items)
             {
@@ -84,6 +95,31 @@ namespace WarechouseInterface.Pages
         private void ZamowienieButton_Click(object sender, RoutedEventArgs e)
         {
             _rootManager.RootFromTo(this, new OrderPage(this));
+        }
+
+        private void SupplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            _rootManager.RootFromTo(this, new SupplyPage(this));
+        }
+
+        private void ReturnButton_Click(object sender, RoutedEventArgs e)
+        {
+            _rootManager.RootFromTo(this, new ReturnPage(this));
+        }
+
+        private void AllertButton_Click(object sender, RoutedEventArgs e)
+        {
+            _isAllertView = !_isAllertView;
+            if (_isAllertView)
+            {
+                AllertButton.Background = System.Windows.Media.Brushes.Red;
+            }
+            else
+            {
+                AllertButton.Background = System.Windows.Media.Brushes.LightGray;
+            }
+           
+            DataGridGenerator();
         }
     }
 }

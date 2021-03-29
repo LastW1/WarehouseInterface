@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WarechouseInterface.Db.DbDtos
 {
@@ -29,6 +30,8 @@ namespace WarechouseInterface.Db.DbDtos
         public int? MinAllert { get; set; }
         [Column("MAX_ALLERT")]
         public int? MaxAllert { get; set; }
+        [Column("DATA_K")]
+        public DateTime? DataK { get; set; }
     }
 }
 

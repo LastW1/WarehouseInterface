@@ -19,5 +19,6 @@ namespace WarechouseInterface.Dtos
         public string AdditionalInfo { get; set; }
         public int? MinAllert { get; set; }
         public int? MaxAllert { get; set; }
+        public bool Allert { get; set; }
     }
 }

@@ -14,6 +14,6 @@ namespace WarechouseInterface.Db.DbDtos
         [Column("COUNT")]
         public int Count { get; set; }
         [Column("SINGLE_PRICE")]
-        public decimal SinglePrice { get; set; }
+        public decimal? SinglePrice { get; set; }
     }
 }

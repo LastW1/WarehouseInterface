@@ -52,8 +52,18 @@
         <Grid Grid.Row="1" Grid.ColumnSpan="5">
             <ScrollViewer>
                 <DataGrid Name ="TestDataGrid" AutoGenerateColumns="False" CanUserResizeColumns="True" CanUserAddRows="false">
-                    <DataGrid.Columns>
 
+                    <DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Allert}" Value="True">
+                                    <Setter Property="Background" Value="Red" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.CellStyle>
+
+                    <DataGrid.Columns>
                         <DataGridTemplateColumn Width ="*" Header="Zdjęcie" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

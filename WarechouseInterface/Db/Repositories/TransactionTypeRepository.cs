@@ -14,5 +14,15 @@ namespace WarechouseInterface.Db.Repositories
         {
             return _databaseContext.TransactionType.First(a => a.Name.Equals("ORDER")).Id;
         }
+
+        public int GetSupplyType()
+        {
+            return _databaseContext.TransactionType.First(a => a.Name.Equals("SUPPLY")).Id;
+        }
+
+        public int GetReturnType()
+        {
+            return _databaseContext.TransactionType.First(a => a.Name.Equals("RETURN")).Id;
+        }
     }
 }
