@@ -255,6 +255,8 @@
     <Compile Include="Db\Repositories\TransactionRepository.cs" />
     <Compile Include="Db\Repositories\TransactionTypeRepository.cs" />
     <Compile Include="Dtos\CountValueDto.cs" />
+    <Compile Include="Dtos\ItemTransactionViewDto.cs" />
+    <Compile Include="Dtos\TransactionViewDto.cs" />
     <Compile Include="Dtos\FullTransactionDto.cs" />
     <Compile Include="Dtos\ItemDto.cs" />
     <Compile Include="Managers\CategoryManager.cs" />
@@ -276,6 +278,9 @@
     <Compile Include="Pages\EditItemPage.xaml.cs">
       <DependentUpon>EditItemPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ItemTransactionHistoryPage.xaml.cs">
+      <DependentUpon>ItemTransactionHistoryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>
@@ -290,6 +295,12 @@
     </Compile>
     <Compile Include="Pages\SupplyPage.xaml.cs">
       <DependentUpon>SupplyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TransactionDetailsPage.xaml.cs">
+      <DependentUpon>TransactionDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TransactionHistoryPage.xaml.cs">
+      <DependentUpon>TransactionHistoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\WarechouseViewerPage.xaml.cs">
       <DependentUpon>WarechouseViewerPage.xaml</DependentUpon>
@@ -319,6 +330,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ItemTransactionHistoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -340,6 +355,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SupplyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TransactionDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TransactionHistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

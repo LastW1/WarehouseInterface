@@ -1,4 +1,6 @@
-﻿using WarechouseInterface.Db.DbDtos;
+﻿using System.Collections.Generic;
+using System.Linq;
+using WarechouseInterface.Db.DbDtos;
 using WarechouseInterface.Repositories;
 
 namespace WarechouseInterface.Db.Repositories
@@ -11,6 +13,14 @@ namespace WarechouseInterface.Db.Repositories
             _databaseContext = contex;
         }
 
+        public IEnumerable<TransactionItemsDbDto> GetItem(int itemId)
+        {
+            return _databaseContext.TransactionItem.Where(a => a.ItemId == itemId);
+        }
+        public IEnumerable<TransactionItemsDbDto> GetTransactionItems(int transactionId)
+        {
+            return _databaseContext.TransactionItem.Where(a => a.TransactionId == transactionId);
+        }
         public void AddItemForTransaction(TransactionItemsDbDto item)
         {
             _databaseContext.TransactionItem.Add(item);

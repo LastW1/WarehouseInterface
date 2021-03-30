@@ -59,5 +59,10 @@ namespace WarechouseInterface.Pages
             MinAllertTextBlock.Text = item.MinAllert == null ? "" : item.MinAllert.ToString();
             MaxAllertTextBlock.Text = item.MaxAllert == null ? "" : item.MaxAllert.ToString();
         }
+
+        private void HistoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            _rootManager.RootFromToWindowOnTop(new ItemTransactionHistoryPage(_itemId));
+        }
     }
 }

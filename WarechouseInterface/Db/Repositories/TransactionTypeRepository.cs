@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using WarechouseInterface.Repositories;
 
 namespace WarechouseInterface.Db.Repositories
@@ -6,9 +7,22 @@ namespace WarechouseInterface.Db.Repositories
     public class TransactionTypeRepository
     {
         private readonly DatabaseContext _databaseContext;
+
+        private readonly Dictionary<string, string> TransactionTypeDict = new Dictionary<string, string>
+        {
+            {"ORDER","Zamówienie"},
+            {"SUPPLY", "Dostawa"},
+            {"RETURN", "Zwrot" }
+        };
+
         public TransactionTypeRepository(DatabaseContext context)
         {
             _databaseContext = context;
+        }
+
+        public string GetStringByTypeId(int typId)
+        {
+            return TransactionTypeDict.First(dict=>dict.Key == _databaseContext.TransactionType.First(a => a.Id == typId).Name).Value;
         }
         public int GetOrderType()
         {

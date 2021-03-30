@@ -10,7 +10,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="WarechouseViewerPage" Height="450" Width="800">
+        Title="WarechouseViewerPage" Height="450" Width="850">
 
     <Window.Resources>
         <Style x:Key="CenterGridHeaderStyle" TargetType="DataGridColumnHeader">
@@ -22,6 +22,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" MinHeight="100"/>
             <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*" MinHeight="50"/>
             <RowDefinition Height="1*" MinHeight="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -130,7 +131,8 @@
                 </DataGrid>
             </ScrollViewer>
         </Grid>
-        <Button Grid.Row="2" Grid.Column="0" Name="BackButton" Content="Powrót" MinHeight="30" VerticalAlignment="Bottom" Click="BackButton_Click" Margin="10"/>
+        <Button Grid.Row="3" Grid.Column="0" Name="BackButton" Content="Powrót" MinHeight="30" VerticalAlignment="Bottom" Click="BackButton_Click" Margin="10"/>
+        <Button Grid.Row="3" Grid.Column="3" Name="HistoryButton" Content="Historia Transakcji" MinHeight="30" VerticalAlignment="Bottom" Margin="10" Click="HistoryButton_Click"/>
 
         <Button Grid.Row="2" Grid.Column="2" Name="ZamowienieButton" Content="Zamówienie" MinHeight="30" VerticalAlignment="Bottom"  Margin="10" Click="ZamowienieButton_Click"/>
         <Button Grid.Row="2" Grid.Column="3" Name="SupplyButton" Content="Dostawa" MinHeight="30" VerticalAlignment="Bottom" Margin="10" Click="SupplyButton_Click"/>

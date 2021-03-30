@@ -121,5 +121,10 @@ namespace WarechouseInterface.Pages
            
             DataGridGenerator();
         }
+
+        private void HistoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            _rootManager.RootFromToWindowOnTop(new TransactionHistoryPage());
+        }
     }
 }

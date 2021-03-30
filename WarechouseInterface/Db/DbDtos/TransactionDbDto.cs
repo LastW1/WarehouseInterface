@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WarechouseInterface.Db.DbDtos
 {
@@ -11,5 +12,7 @@ namespace WarechouseInterface.Db.DbDtos
         public int TypId { get; set; }
         [Column("DESCRIBE")]
         public string Describe { get; set; }
+        [Column("DATE")]
+        public DateTime Date { get; set; }
     }
 }

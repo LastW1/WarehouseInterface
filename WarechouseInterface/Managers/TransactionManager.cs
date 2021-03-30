@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WarechouseInterface.Db.DbDtos;
 using WarechouseInterface.Db.Repositories;
 using WarechouseInterface.Dtos;
 using WarechouseInterface.Repositories;
@@ -21,6 +22,48 @@ namespace WarechouseInterface.Managers
             _transactionItemsRepository = new TransactionItemsRepository(context);
             _transactionTypeRepository = new TransactionTypeRepository(context);
             _itemRepository = new ItemRepository(context);
+        }
+
+        public IEnumerable<ItemTransactionViewDto> GetItemTransactions(int itemId)
+        {
+            var result = new List<ItemTransactionViewDto>();
+
+            var transactionItems = _transactionItemsRepository.GetItem(itemId);
+
+            foreach (var transactionItem in transactionItems)
+            {
+                var transaction = _transactionRepository.GetTransaction(transactionItem.TransactionId);
+
+                result.Add(new ItemTransactionViewDto
+                {
+                    TransactionId = transactionItem.TransactionId,
+                    Date = transaction.Date,
+                    Type = _transactionTypeRepository.GetStringByTypeId(transaction.TypId),
+                    Count = transactionItem.Count,
+                    SinglePrice = transactionItem.SinglePrice
+                });
+            }
+
+            return result;
+        }
+        public IEnumerable<TransactionViewDto> GetAllTransactions()
+        {
+            var result = new List<TransactionViewDto>();
+
+            var transactions = _transactionRepository.GetTransactions();
+
+            foreach (var transaction in transactions)
+            {
+                result.Add(new TransactionViewDto
+                {
+                    Date = transaction.Date,
+                    Type = _transactionTypeRepository.GetStringByTypeId(transaction.TypId),
+                    Describe = transaction.Describe,
+                    Worth = _transactionItemsRepository.GetTransactionItems(transaction.Id).Select(a => a.SinglePrice * a.Count).Sum().Value
+                });
+            }
+
+            return result;
         }
 
         public void AddOrderTransaction(FullTransactionDto transaction)

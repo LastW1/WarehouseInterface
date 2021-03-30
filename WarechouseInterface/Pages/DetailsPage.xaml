@@ -23,8 +23,14 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="60px"/>
         </Grid.RowDefinitions>
-        <ScrollViewer>
-            <Grid Grid.Row="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
@@ -79,6 +85,7 @@
                 <TextBlock Name="MaxAllertTextBlock" Grid.Row="7" Grid.Column="3" Style="{StaticResource ItemTextBlockStyle}"/>
             </Grid>
         </ScrollViewer>
-        <Button Name="GoBackButton" Grid.Row="1" Content="Powrót" Margin="10" Click="GoBackButton_Click"/>
+        <Button Name="GoBackButton" Grid.Row="1" Grid.Column="0" Content="Powrót" Margin="10" Click="GoBackButton_Click"/>
+        <Button Name="HistoryButton" Grid.Row="1" Grid.Column="2" Content="Historia" Margin="10" Click="HistoryButton_Click"/>
     </Grid>
 </Window>
