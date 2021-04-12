@@ -152,6 +152,7 @@
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.5.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -292,6 +293,9 @@
     <Compile Include="Pages\AddItemPage.xaml.cs">
       <DependentUpon>AddItemPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CategorySettingPage.xaml.cs">
+      <DependentUpon>CategorySettingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DetailsPage.xaml.cs">
       <DependentUpon>DetailsPage.xaml</DependentUpon>
     </Compile>
@@ -325,6 +329,7 @@
     <Compile Include="Pages\WarehouseViewerPage.xaml.cs">
       <DependentUpon>WarehouseViewerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\WindowBehavior.cs" />
     <Compile Include="Tests\Managers\CategoryManagerTest.cs" />
     <Compile Include="Tests\Managers\PasswordManagerTest.cs" />
     <Compile Include="Tests\Validators\ItemValidatorTest.cs" />
@@ -339,6 +344,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AddItemPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CategorySettingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

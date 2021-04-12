@@ -4,27 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WarehouseInterface.Pages"
-        BorderBrush="Black"
+        
+        xmlns:u="clr-namespace:WarehouseInterface.Pages"
+        u:WindowBehavior.HideCloseButton="True"
+        
+        BorderBrush="Gray"
         BorderThickness="4"
-        WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="" Height="160" Width="350">
+        Title="" Height="180" Width="400">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1.5*" MinHeight="50"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Nazwa Kategorii" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBox Name="NameTextBox" Grid.Row="0" Grid.Column="1" Margin="20" MinHeight="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <TextBox Name="NameTextBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="20" MinHeight="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
-        <Button Name="GoBackButton" Grid.Row="1" Grid.Column="0" Content="Anuluj" Margin="5" MinHeight="30" Click="GoBackButton_Click"/>
-        <Button Name="AddCategoryButton" Grid.Row="1" Grid.Column="1" Content="Dodaj Kategorię" Margin="5" MinHeight="30" Click="AddCategoryButton_Click"/>
+        <Button Name="GoBackButton" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Anuluj" Margin="10" MinHeight="30" Click="GoBackButton_Click"/>
+        <Button Name="AddCategoryButton" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Content="Dodaj Kategorię" Margin="10" MinHeight="30" Click="AddCategoryButton_Click"/>
     </Grid>
 </Window>

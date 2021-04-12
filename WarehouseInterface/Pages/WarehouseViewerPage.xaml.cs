@@ -7,6 +7,7 @@ using WarehouseInterface.Repositories;
 using WarehouseInterface.Dtos;
 using WarehouseInterface.Managers;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace WarehouseInterface.Pages
 {
@@ -29,7 +30,7 @@ namespace WarehouseInterface.Pages
             _itemRepository = new ItemRepository(context);
 
             _rootManager = new RootManager();
-        
+
             InitializeComponent();
 
             DataGridGenerator();

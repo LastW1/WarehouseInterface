@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore.Internal;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using WarehouseInterface.Db.DbDtos;
@@ -14,11 +15,22 @@ namespace WarehouseInterface.Db.Repositories
             _databaseContext = context;
         }
 
+        public CategoryDbDto GetCategory(int categoryId)
+        {
+          
+            return _databaseContext.Category.FirstOrDefault(a => a.Id == categoryId);
+        }
+
         public IEnumerable<CategoryDbDto> GetCategories()
         {
             var warehouseId = int.Parse(ConfigurationManager.AppSettings.Get("ActualWarehouseId"));
 
             return _databaseContext.Category.Where(a => a.WarehouseId == warehouseId);
+        }
+
+        public IEnumerable<string> GetItemsAssignedToCategory(int categoryId)
+        {
+            return _databaseContext.Item.Where(a => a.CategoryId == categoryId).Select(a => a.Name);
         }
 
         public int? AddCategory(string categoryName)
@@ -40,6 +52,21 @@ namespace WarehouseInterface.Db.Repositories
             _databaseContext.SaveChanges();
 
             return category.Id;
+        }
+
+        public void ChangeCategoryName(int categoryId, string name)
+        {
+            var category = GetCategory(categoryId);
+            category.Name = name;
+
+            _databaseContext.SaveChanges();
+        }
+
+        public void RemoveCategory(int categoryId)
+        {
+            var category = GetCategory(categoryId);
+            _databaseContext.Category.Remove(category);
+            _databaseContext.SaveChanges();
         }
     }
 }

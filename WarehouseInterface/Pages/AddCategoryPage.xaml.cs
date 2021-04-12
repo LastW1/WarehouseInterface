@@ -12,6 +12,7 @@ namespace WarehouseInterface.Pages
 
         private RootManager _rootManager;
         private CategoryManager _categoryManager;
+        private CategorySettingPage _categorySettingPage;
         public AddCategoryPage(AddItemPage addItemPage)
         {
             _addItemPage = addItemPage;
@@ -21,6 +22,12 @@ namespace WarehouseInterface.Pages
         public AddCategoryPage(EditItemPage editItemPage)
         {
             _editItemPage = editItemPage;
+            InitializePage();
+        }
+
+        public AddCategoryPage(CategorySettingPage categorySettingPage)
+        {
+            _categorySettingPage = categorySettingPage;
             InitializePage();
         }
 
@@ -51,9 +58,15 @@ namespace WarehouseInterface.Pages
                     _rootManager.TerminateWindow(this);
                     return;
                 }
-                if (_editItemPage != null)
+                else if (_editItemPage != null)
                 {
                     _editItemPage.ReloadCategoryCollection(categoryId.Value);
+                    _rootManager.TerminateWindow(this);
+                    return;
+                }
+                else if(_categorySettingPage != null)
+                {
+                    _categorySettingPage.DataGridGenerator();
                     _rootManager.TerminateWindow(this);
                     return;
                 }

@@ -4,11 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WarehouseInterface.Pages"
-        BorderBrush="Black"
+       
+        xmlns:u="clr-namespace:WarehouseInterface.Pages"
+        u:WindowBehavior.HideCloseButton="True"
+        
+        BorderBrush="Gray"
         BorderThickness="4"
-        WindowStyle="SingleBorderWindow"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
+        
         Title="" Height="650" Width="530">
 
     <Window.Resources>
@@ -27,6 +31,14 @@
             <Setter Property="Margin" Value="20"/>
             <Setter Property="MinHeight" Value="30"/>
         </Style>
+
+        <Style x:Key="ItemLargeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="MinHeight" Value="30"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -42,9 +54,9 @@
                     <RowDefinition Height="3*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="3*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
@@ -79,13 +91,13 @@
                 <TextBox Grid.Row ="4" Grid.Column="2" Name="PriceTextBox"  Style="{StaticResource ItemTextBoxStyle}" PreviewTextInput="DecimalValidationTextBox"/>
 
                 <TextBlock Grid.Row ="5" Grid.Column="0" Text="Opis:" Style="{StaticResource ItemTextBlockStyle}"/>
-                <TextBox Grid.Row ="5" Grid.Column="2" Name="DescrieTextBox"  Style="{StaticResource ItemTextBoxStyle}"/>
+                <TextBox Grid.Row ="5" Grid.Column="2" Name="DescrieTextBox" Style="{StaticResource ItemLargeTextBoxStyle}"/>
 
                 <TextBlock Grid.Row ="6" Grid.Column="0" Text="Lokalizacja:" Style="{StaticResource ItemTextBlockStyle}"/>
-                <TextBox Grid.Row ="6" Grid.Column="2" Name="LocationTextBox"  Style="{StaticResource ItemTextBoxStyle}"/>
+                <TextBox Grid.Row ="6" Grid.Column="2" Name="LocationTextBox" Style="{StaticResource ItemLargeTextBoxStyle}"/>
 
                 <TextBlock Grid.Row ="7" Grid.Column="0" Text="Dodatkowe Infroamcje:" Style="{StaticResource ItemTextBlockStyle}"/>
-                <TextBox Grid.Row ="7" Grid.Column="2" Name="AdditionalInfoTextBox"  Style="{StaticResource ItemTextBoxStyle}"/>
+                <TextBox Grid.Row ="7" Grid.Column="2" Name="AdditionalInfoTextBox" Style="{StaticResource ItemLargeTextBoxStyle}"/>
 
                 <TextBlock Grid.Row ="8" Grid.Column="0" Text="Alert Minimalnego Stanu:" Style="{StaticResource ItemTextBlockStyle}"/>
                 <TextBox Grid.Row ="8" Grid.Column="2" Name="MinAllertTextBox"  Style="{StaticResource ItemTextBoxStyle}" PreviewTextInput="NumberValidationTextBox"/>

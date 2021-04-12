@@ -4,10 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WarehouseInterface.Pages"
-        mc:Ignorable="d"
-         BorderBrush="Black"
+        
+         xmlns:u="clr-namespace:WarehouseInterface.Pages"
+        u:WindowBehavior.HideCloseButton="True"
+        
+        BorderBrush="Gray"
         BorderThickness="4"
         WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
         
         Title="" Height="500" Width="500">
 

@@ -21,5 +21,10 @@ namespace WarehouseInterface.Pages
         {
             _rootManager.ExitApp();
         }
+
+        private void CategorySettignsButton_Click(object sender, RoutedEventArgs e)
+        {
+            _rootManager.RootFromTo(this, new CategorySettingPage(this));
+        }
     }
 }
