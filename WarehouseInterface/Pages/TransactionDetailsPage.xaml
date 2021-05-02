@@ -12,8 +12,85 @@
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         
-        Title="TransactionDetailsPage" Height="450" Width="800">
+        Title="" Height="430" Width="500">
+
+    <Window.Resources>
+        <Style x:Key="CenterGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" Grid.Row="0" MinHeight="20" Margin="5" Text="Typ operacji" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Name="TypeTextBlock" Grid.Column="1" Grid.Row="0" MinHeight="20" Margin="5" Text="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="1" MinHeight="20" Margin="5" Text="Data operacji:" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Name="DateTextBlock" Grid.Column="1" Grid.Row="1" MinHeight="20" Margin="5" Text="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         
+        <TextBlock Grid.Column="0" Grid.Row="2" MinHeight="20" Margin="5" Text="Suma wartości dla operacji:" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Name="SumTextBlock" Grid.Column="1" Grid.Row="2" MinHeight="20" Margin="5" Text="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+        <TextBlock  Grid.ColumnSpan="2" Grid.Row="4" MinHeight="30" Text="Opis operacji:" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <ScrollViewer  Grid.ColumnSpan="2" Grid.Row="5">
+            <TextBlock Name="DescriptionTextBox"  Grid.ColumnSpan="2" Grid.Row="3" MinHeight="80" Margin="10" TextWrapping="Wrap"/>
+            </ScrollViewer>
+                
+                <Grid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="120">
+            <ScrollViewer>
+                <DataGrid Name ="TestDataGrid" AutoGenerateColumns="False" CanUserResizeColumns="True" CanUserAddRows="false">
+                    <DataGrid.Columns>
+
+                        <DataGridTemplateColumn Width ="1*" Header="Kategoria" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Category}"></Label>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width ="1*" Header="Nazwa" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Name}"></Label>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width ="1*" Header="Ilość" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="CountLabel" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Count}"></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width ="Auto" Header="Wartość / szt" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding SinglePrice}"></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+        </Grid>
+
+        <Button Name="GoBackButton" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="7" MinHeight="30" Margin="10" Content="Zamknij" Click="GoBackButton_Click"/>
     </Grid>
 </Window>

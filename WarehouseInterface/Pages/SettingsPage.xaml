@@ -13,7 +13,7 @@
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         
-        Title="SettingsPage" Height="280" Width="180">
+        Title="" Height="280" Width="180">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -25,8 +25,8 @@
 
         <Button Grid.Row="0" Margin="10" Content="Główny Widok" Click="Button_Click"/>
         <Button Name="CategorySettignsButton" Grid.Row="1" Margin="10" Content="Ustawienia Kategorii" Click="CategorySettignsButton_Click"/>
-        <Button Grid.Row="2" Margin="10" Content="Ustawienia Hasła"/>
-        <Button Grid.Row="3" Margin="10" Content="Wybór Magazynu"/>
+        <Button Name="PasswordButton" Grid.Row="2" Margin="10" Content="Ustawienia Hasła" Click="PasswordButton_Click"/>
+        <Button Name="WarechouseButton" Grid.Row="3" Margin="10" Content="Wybór Magazynu" Click="WarechouseButton_Click"/>
         <Button Name="CloseAppButton" Grid.Row="4" Margin="10" Content="Zamknij Aplikację" Click="CloseAppButton_Click"/>
     </Grid>
 </Window>

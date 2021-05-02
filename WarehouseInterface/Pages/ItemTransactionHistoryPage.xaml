@@ -74,7 +74,7 @@
                         <DataGridTemplateColumn Width ="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Name="DetailsButton" CommandParameter="{Binding Path=Id}" Width ="Auto" Click="DetailsButton_Click">Szczegóły</Button>
+                                    <Button Name="DetailsButton" CommandParameter="{Binding Path=TransactionId}" Width ="Auto" Click="DetailsButton_Click">Szczegóły</Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

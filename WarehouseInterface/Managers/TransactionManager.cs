@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WarehouseInterface.Db.DbDtos;
 using WarehouseInterface.Db.Repositories;
 using WarehouseInterface.Dtos;
 using WarehouseInterface.Repositories;
@@ -16,12 +12,37 @@ namespace WarehouseInterface.Managers
         private TransactionItemsRepository _transactionItemsRepository;
         private TransactionTypeRepository _transactionTypeRepository;
         private ItemRepository _itemRepository;
+        private CategoryRepository _categoryRepository;
         public TransactionManager(DatabaseContext context)
         {
             _transactionRepository = new TransactionRepository(context);
             _transactionItemsRepository = new TransactionItemsRepository(context);
             _transactionTypeRepository = new TransactionTypeRepository(context);
             _itemRepository = new ItemRepository(context);
+            _categoryRepository = new CategoryRepository(context);
+        }
+
+        public IEnumerable<TransactionItemViewDto> GetItemsForTransaction(int transactionId)
+        {
+            var transactionitems = _transactionItemsRepository.GetTransactionItems(transactionId);
+
+            var result = new List<TransactionItemViewDto>();
+
+            foreach (var transactionitem in transactionitems)
+            {
+                var item = _itemRepository.GetItemById(transactionitem.ItemId);
+
+                result.Add(new TransactionItemViewDto
+                {
+                    ItemId = item.Id,
+                    Name = item.Name,
+                    Category = _categoryRepository.GetCategory(item.CategoryId).Name,
+                    Count = transactionitem.Count,
+                    SinglePrice = transactionitem.SinglePrice
+                });
+            }
+
+            return result;
         }
 
         public IEnumerable<ItemTransactionViewDto> GetItemTransactions(int itemId)
@@ -46,6 +67,23 @@ namespace WarehouseInterface.Managers
 
             return result;
         }
+
+        public TransactionViewDto GetTransactionView(int transactionId)
+        {
+            var result = new List<TransactionViewDto>();
+
+            var transaction = _transactionRepository.GetTransaction(transactionId);
+
+            return new TransactionViewDto
+            {
+                Id = transaction.Id,
+                Date = transaction.Date,
+                Type = _transactionTypeRepository.GetStringByTypeId(transaction.TypId),
+                Describe = transaction.Describe,
+                Worth = _transactionItemsRepository.GetTransactionItems(transaction.Id).Select(a => a.SinglePrice * a.Count).Sum().Value
+            };
+        }
+
         public IEnumerable<TransactionViewDto> GetAllTransactions()
         {
             var result = new List<TransactionViewDto>();
@@ -56,6 +94,7 @@ namespace WarehouseInterface.Managers
             {
                 result.Add(new TransactionViewDto
                 {
+                    Id = transaction.Id,
                     Date = transaction.Date,
                     Type = _transactionTypeRepository.GetStringByTypeId(transaction.TypId),
                     Describe = transaction.Describe,

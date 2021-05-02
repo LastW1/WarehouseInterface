@@ -79,12 +79,12 @@
                     <Button Name="CategoryAddButton" Grid.Column="1" Margin="10" MinHeight="30" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" VerticalAlignment="Center" HorizontalAlignment="Center" Content="+" Click="CategoryAddButton_Click"/>
                 </Grid>
 
-                <TextBlock Grid.Row ="2" Grid.Column="0" Text="Picture" Style="{StaticResource ItemTextBlockStyle}"/>
+                <TextBlock Grid.Row ="2" Grid.Column="0" Text="Zdjęcie" Style="{StaticResource ItemTextBlockStyle}"/>
                 <Button Grid.Row ="2" Grid.Column="1" Name="ImageButton" MinHeight="200" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" Click="ImageButton_Click">
                     <Image Name="ImageButtonImage" Stretch="UniformToFill" Source="/WarehouseInterface;component/Images/addPictureImage.png"/>
                 </Button>
 
-                <TextBlock Grid.Row ="3" Grid.Column="0" Text="Count:" Style="{StaticResource ItemTextBlockStyle}"/>
+                <TextBlock Grid.Row ="3" Grid.Column="0" Text="Ilość:" Style="{StaticResource ItemTextBlockStyle}"/>
                 <TextBox Grid.Row ="3" Grid.Column="2" Name="CountTextBox"  Style="{StaticResource ItemTextBoxStyle}" PreviewTextInput="NumberValidationTextBox"/>
 
                 <TextBlock Grid.Row ="4" Grid.Column="0" Text="Cena:" Style="{StaticResource ItemTextBlockStyle}"/>

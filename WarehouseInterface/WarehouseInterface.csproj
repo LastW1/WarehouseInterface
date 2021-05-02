@@ -277,6 +277,7 @@
     <Compile Include="Db\Repositories\TransactionTypeRepository.cs" />
     <Compile Include="Dtos\CountValueDto.cs" />
     <Compile Include="Dtos\ItemTransactionViewDto.cs" />
+    <Compile Include="Dtos\TransactionItemViewDto.cs" />
     <Compile Include="Dtos\TransactionViewDto.cs" />
     <Compile Include="Dtos\FullTransactionDto.cs" />
     <Compile Include="Dtos\ItemDto.cs" />
@@ -308,6 +309,9 @@
     <Compile Include="Pages\OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PasswordSettingPage.xaml.cs">
+      <DependentUpon>PasswordSettingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ReturnPage.xaml.cs">
       <DependentUpon>ReturnPage.xaml</DependentUpon>
     </Compile>
@@ -333,7 +337,9 @@
     <Compile Include="Tests\Managers\CategoryManagerTest.cs" />
     <Compile Include="Tests\Managers\PasswordManagerTest.cs" />
     <Compile Include="Tests\Validators\ItemValidatorTest.cs" />
+    <Compile Include="Tests\Validators\PasswordValidatorTest.cs" />
     <Compile Include="Validators\ItemValidator.cs" />
+    <Compile Include="Validators\PasswordValidator.cs" />
     <Compile Include="Validators\TextBoxValidator.cs" />
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
@@ -368,6 +374,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\OrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PasswordSettingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

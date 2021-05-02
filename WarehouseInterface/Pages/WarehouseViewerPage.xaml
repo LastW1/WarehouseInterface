@@ -13,7 +13,7 @@
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         
-        Title="WarehouseViewerPage" Height="480" Width="850">
+        Title="" Height="480" Width="850">
 
     <Window.Resources>
         <Style x:Key="CenterGridHeaderStyle" TargetType="DataGridColumnHeader">

@@ -46,17 +46,15 @@ namespace WarehouseInterface.Pages.PageLogic
 
         private void Login()
         {
-            try
+
+            if (_passwordManager.PasswordCheck(PasswordBoxItem.Password))
             {
-                if (_passwordManager.PasswordCheck(PasswordBoxItem.Password))
-                {
-                    _rootManager.RootFromTo(this, new SettingsPage());
-                }
+                _rootManager.RootFromTo(this, new SettingsPage());
             }
-            catch (Exception exception)
+            else
             {
-                MessageLabel.Content = exception.Message;
+                MessageLabel.Content = "Podano niepoprawne hasło!";
             }
-        }     
+        }
     }
 }

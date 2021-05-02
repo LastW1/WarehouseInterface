@@ -26,5 +26,15 @@ namespace WarehouseInterface.Pages
         {
             _rootManager.RootFromTo(this, new CategorySettingPage(this));
         }
+
+        private void PasswordButton_Click(object sender, RoutedEventArgs e)
+        {
+            _rootManager.RootFromTo(this, new PasswordSettingPage(this));
+        }
+
+        private void WarechouseButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Funkcjonalność nie dostępna :C");
+        }
     }
 }

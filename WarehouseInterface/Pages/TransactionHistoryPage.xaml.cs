@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using WarehouseInterface.Dtos;
 using WarehouseInterface.Managers;
 using WarehouseInterface.Repositories;
@@ -47,7 +48,8 @@ namespace WarehouseInterface.Pages
 
         private void DetailsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var transactionId = (int)((Button)sender).CommandParameter;
+            _rootManager.RootFromToWindowOnTop(new TransactionDetailsPage(transactionId));
         }
     }
 }
