@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WarehouseInterface.Db.DbDtos;
 using WarehouseInterface.Db.Repositories;
 using WarehouseInterface.Managers;
@@ -21,7 +10,6 @@ using WarehouseInterface.Validators;
 
 namespace WarehouseInterface.Pages
 {
-    // zrobić szersze okna dla opisów z zawijaniem
     public partial class EditItemPage : Window
     {
         public ObservableCollection<CategoryDbDto> _comboCollection { get; set; }
@@ -29,7 +17,6 @@ namespace WarehouseInterface.Pages
         private bool _isImageChanged = false;
         private int _itemId;
         private WarehouseViewerPage _warehouseViewWindow;
-        private CategoryRepository _categoryRepository;
         private CategoryManager _categoryManager;
         private RootManager _rootManager;
 
@@ -43,7 +30,6 @@ namespace WarehouseInterface.Pages
 
             var context = new DatabaseContext();
             _itemRepository = new ItemRepository(context);
-            _categoryRepository = new CategoryRepository(context);
             _categoryManager = new CategoryManager(context);
             _rootManager = new RootManager();
 
@@ -147,7 +133,7 @@ namespace WarehouseInterface.Pages
 
         private void CategoryAddButton_Click(object sender, RoutedEventArgs e)
         {
-
+            _rootManager.RootFromToWindowOnTop(new AddCategoryPage(this));
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
 using WarehouseInterface.Db.DbDtos;
-using WarehouseInterface.Dtos;
 using WarehouseInterface.Repositories;
 
 namespace WarehouseInterface.Db.Repositories

@@ -34,7 +34,7 @@ namespace WarehouseInterface.Pages
 
         private void WarechouseButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Funkcjonalność nie dostępna :C");
+            MessageBox.Show("Funkcjonalność niedostępna :C");
         }
     }
 }

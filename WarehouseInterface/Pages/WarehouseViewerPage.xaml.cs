@@ -7,7 +7,6 @@ using WarehouseInterface.Repositories;
 using WarehouseInterface.Dtos;
 using WarehouseInterface.Managers;
 using System.Collections.Generic;
-using System.Configuration;
 
 namespace WarehouseInterface.Pages
 {

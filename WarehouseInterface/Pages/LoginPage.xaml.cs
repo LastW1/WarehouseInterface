@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using WarehouseInterface.Managers;
 using WarehouseInterface.Repositories;
@@ -38,7 +37,7 @@ namespace WarehouseInterface.Pages.PageLogic
             _rootManager.ExitApp();
         }
 
-        private void PasswordBoxItem_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void PasswordBoxItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             PasswordBoxItem.Password = "";
             MessageLabel.Content = "";

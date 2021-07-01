@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WarehouseInterface.Db.DbDtos
 {
@@ -11,5 +12,7 @@ namespace WarehouseInterface.Db.DbDtos
         public int WarehouseId { get; set; }
         [Column("NAME")]
         public string Name { get; set; }
+        [Column("DATA_K")]
+        public DateTime? DataK { get; set; }
     }
 }

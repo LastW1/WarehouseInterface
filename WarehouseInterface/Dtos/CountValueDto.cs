@@ -1,5 +1,4 @@
-﻿using System;
-namespace WarehouseInterface.Dtos
+﻿namespace WarehouseInterface.Dtos
 {
     public class CountValueDto
     {

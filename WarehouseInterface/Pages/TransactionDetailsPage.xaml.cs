@@ -1,33 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using WarehouseInterface.Db.Repositories;
 using WarehouseInterface.Dtos;
 using WarehouseInterface.Managers;
 using WarehouseInterface.Repositories;
 
 namespace WarehouseInterface.Pages
 {
-    /// <summary>
-    /// Interaction logic for TransactionDetailsPage.xaml
-    /// </summary>
     public partial class TransactionDetailsPage : Window
     {
         private int _transactionId;
         private RootManager _rootManager;
         private TransactionManager _transactionManager;
-        private TransactionItemsRepository _transactionItemsRepository;
 
         public ObservableCollection<TransactionItemViewDto> _dataGridCollection;
 
@@ -39,7 +22,6 @@ namespace WarehouseInterface.Pages
 
             var context = new DatabaseContext();
             _transactionManager = new TransactionManager(context);
-            _transactionItemsRepository = new TransactionItemsRepository(context);
 
             InitializeComponent();
             LoadData();

@@ -5,7 +5,6 @@ using WarehouseInterface.Repositories;
 
 namespace WarehouseInterface.Tests
 {
-   // [TestFixture, RequiresSTA] gdy w teście używane są obiekty z okna WPF
     [TestFixture]
     public class PasswordManagerTest
     {

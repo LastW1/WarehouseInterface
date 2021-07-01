@@ -21,7 +21,6 @@ namespace WarehouseInterface.Pages
         public ObservableCollection<CategoryDbDto> CategoryComboItems { get; set; }
         public AddItemPage(WarehouseViewerPage warehouseViewWindow)
         {
-            // If item.Name == "JEBAĆ PIS" then gratulację i przekierowanie na yt
             var context = new DatabaseContext();
             _itemRepository = new ItemRepository(context);
             _categoryManager = new CategoryManager(context);

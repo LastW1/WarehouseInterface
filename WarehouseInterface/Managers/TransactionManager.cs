@@ -30,7 +30,7 @@ namespace WarehouseInterface.Managers
 
             foreach (var transactionitem in transactionitems)
             {
-                var item = _itemRepository.GetItemById(transactionitem.ItemId);
+                var item = _itemRepository.GetItemByIdArchivalIncluded(transactionitem.ItemId);
 
                 result.Add(new TransactionItemViewDto
                 {

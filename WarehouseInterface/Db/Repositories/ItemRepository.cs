@@ -16,6 +16,13 @@ namespace WarehouseInterface.Db.Repositories
             _databaseContext = context;
         }
 
+        public ItemDbDto GetItemByIdArchivalIncluded(int itemId)
+        {
+            var warehouseId = int.Parse(ConfigurationManager.AppSettings.Get("ActualWarehouseId"));
+
+            return _databaseContext.Item.FirstOrDefault(a => a.WarehouseId == warehouseId && a.Id == itemId);
+        }
+
         public ItemDbDto GetItemById(int itemId)
         {
             var warehouseId = int.Parse(ConfigurationManager.AppSettings.Get("ActualWarehouseId"));
