@@ -1,5 +1,5 @@
-Jest to katalog zawierajacy skompilowaną wersję oprogramowania.
-Aby uruchomić rozwiązanie, należy przy pomocy (np VisualStudio) uruchomić plik WarehouseInterface.sln znajdującego się w głównym katalogu.
-Uruchomić apliakcję można z poziomu Visual studio (RUN) lub przez uruchomienie pliku .exe
-Plik exe znajduje się w następującej lokalizacji: WarehouseInterface -> bin -> Debug -> WarehouseInterface.exe
-Program wymaga wprowadenia hasła, domyślnie jest to hasło "admin".
+Warehouse Interface is simple WPF program for shop warehouse management.
+It allows you to store and modify actual products data and stock levels.
+It is also tool for creating and archiving orders and supplies.
+
+Program need to give it the password, default is "admin"
